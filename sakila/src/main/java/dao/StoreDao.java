@@ -10,27 +10,14 @@ public class StoreDao {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/sakila","root","java1234");
-			/*
-				SELECT 
-					s1.store_id storeId,
-					s1.manager_staff_id staffId, 
-					concat(s2.first_name,' ',s2.last_name) staffName,
-					s1.address_id addressId,
-					CONCAT(a.address, IFNULL(a.address2, ' '), district) staffAddress,
-					s1.last_update lastUpdate
-				FROM store s1 
-					INNER JOIN staff s2
-					INNER JOIN address a
-				ON s1.manager_staff_id = s2.staff_id 
-				AND s1.address_id = a.address_id
-			 */
+		
 			String sql = "SELECT"
-					+ "		s1.store_id storeId,"
-					+ "		s1.manager_staff_id staffId,"
-					+ "		concat(s2.first_name,' ',s2.last_name) staffName,"
-					+ "		s1.address_id addressId,"
-					+ "		CONCAT(a.address, IFNULL(a.address2, ' '), district) staffAddress,"
-					+ "		s1.last_update lastUpdate"
+					+ "	s1.store_id storeId,"
+					+ "	s1.manager_staff_id staffId,"
+					+ "	concat(s2.first_name,' ',s2.last_name) staffName,"
+					+ "	s1.address_id addressId,"
+					+ "	CONCAT(a.address, IFNULL(a.address2, ' '), district) staffAddress,"
+					+ "	s1.last_update lastUpdate"
 					+ " FROM store s1"
 					+ " INNER JOIN staff s2"
 					+ " INNER JOIN address a"

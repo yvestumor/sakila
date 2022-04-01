@@ -10,11 +10,13 @@
 <head>
 <meta charset="UTF-8">
 <title>StoreList</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<a href="">index</a>
-	<h1>Store List</h1>
-	<table border="1">
+<div class="container">
+	<a  href="<%=request.getContextPath()%>/index.jsp">index</a>
+	<h1 class="display-1">Store List</h1>
+	<table class="table table-striped">
 	 	<thead>
 	 		<tr>
 	 			<th>storeId</th>
@@ -43,5 +45,6 @@
 	 		
 	 	</tbody>
 	</table>
+</div>
 </body>
 </html>
