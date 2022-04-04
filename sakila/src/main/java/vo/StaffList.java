@@ -1,20 +1,17 @@
 package vo;
-public class CustomerList {
+public class StaffList {
 	private int id;
 	private String name;
 	private String address;
-	private int zipCode;
+	private String zipCode;
 	private long phone;
 	private String city;
 	private String country;
-	private String notes;
 	private int sid;
-	
 	@Override
 	public String toString() {
-		return "CustomerList [id=" + id + ", name=" + name + ", address=" + address + ", zipCode=" + zipCode
-				+ ", phone=" + phone + ", city=" + city + ", country=" + country + ", notes=" + notes + ", sid=" + sid
-				+ "]";
+		return "StaffList [id=" + id + ", name=" + name + ", address=" + address + ", zipCode=" + zipCode + ", phone="
+				+ phone + ", city=" + city + ", country=" + country + ", sid=" + sid + "]";
 	}
 	public int getId() {
 		return id;
@@ -34,10 +31,10 @@ public class CustomerList {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
-	public void setZipCode(int zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 	public long getPhone() {
@@ -57,12 +54,6 @@ public class CustomerList {
 	}
 	public void setCountry(String country) {
 		this.country = country;
-	}
-	public String getNotes() {
-		return notes;
-	}
-	public void setNotes(String notes) {
-		this.notes = notes;
 	}
 	public int getSid() {
 		return sid;

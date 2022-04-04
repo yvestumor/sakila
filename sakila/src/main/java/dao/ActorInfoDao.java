@@ -13,7 +13,7 @@ import vo.ActorInfo;
 
 public class ActorInfoDao {
 	public List<ActorInfo> selectActorInfoListByPage(int beginRow, int rowPerPage) {
-		ArrayList<ActorInfo> list = new ArrayList<ActorInfo>(); // 다형성
+		List<ActorInfo> list = new ArrayList<ActorInfo>(); // 다형성
 		Connection conn = null;
 		conn = DBUtil.getConnection();
 		String sql ="SELECT actor_id actorId, first_name firstName, last_name lastName, film_info filmInfo FROM actor_info ORDER BY actor_id LIMIT ?,?";
