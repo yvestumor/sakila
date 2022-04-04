@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="container">
-	<a  href="<%=request.getContextPath()%>/index.jsp">index</a>
+	<a class="btn btn-light" href="<%=request.getContextPath()%>/index.jsp">index</a>
 	<h1 class="display-1">Staff List</h1>
 	<table class="table table-striped">
 		<thead>

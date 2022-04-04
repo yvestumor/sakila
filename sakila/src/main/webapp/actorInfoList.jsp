@@ -22,11 +22,9 @@
 	int lastPage = 0; //마지막 페이지
 	List<ActorInfo> list = actorInfoDao.selectActorInfoListByPage(beginRow, rowPerPage);
 	int totalCount = actorInfoDao.selectActorInfoTotalRow();
-	System.out.println(totalCount + " <--totalCount");
+	System.out.println(totalCount + " <--totalCount"); //디버깅
 	
-	
-	// 마지막 페이지 0으로 초기화 
-	if(totalCount % rowPerPage == 0) {
+	if(totalCount % rowPerPage == 0) { //전체개수 / 페이지당 볼수있는개수 나머지가 0이면
 		lastPage =totalCount / rowPerPage;
 		
 	} else {
@@ -43,6 +41,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
+<div class="container">
+<a class="btn btn-light" href="<%=request.getContextPath()%>/index.jsp">index</a>
 	<h1 class="display-1">ActorInfo List</h1>
 	<table class="table table-striped">
 		<thead>
@@ -84,5 +84,6 @@
 			}
 		%>
 	</div>
+</div>
 </body>
 </html>

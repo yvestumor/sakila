@@ -10,7 +10,14 @@
 	<ol>
 		<li><a href="<%=request.getContextPath()%>/storeList.jsp">Store List</a></li>
 		<li><a href="<%=request.getContextPath()%>/staffList.jsp">Staff List</a></li>
-		<li><a href="<%=request.getContextPath()%>/actorInfoList.jsp">ActorInfo List</a></li>
+		<!-- viewList -->
+		<li><a href="<%=request.getContextPath()%>/actorInfoList.jsp">ActorInfoList(view)</a></li>
+		<li><a href="<%=request.getContextPath()%>/customerList.jsp">customerList(view)</a></li>
+		<li><a href="<%=request.getContextPath()%>/filmList.jsp">filmList(view)</a></li>
+		<li><a href="<%=request.getContextPath()%>/nicerButSlowerFilmList.jsp">nicerButSlowerFilmList(view)</a></li>
+		<li><a href="<%=request.getContextPath()%>/salesByFilmCategoryList.jsp">salesByFilmCategoryList(view)</a></li>
+		<li><a href="<%=request.getContextPath()%>/salesByStoreList.jsp">salesByStoreList(view)</a></li>
+		<li><a href="<%=request.getContextPath()%>/staffList.jsp">staffList(view)</a></li>
 	</ol>
 </body>
 </html>
