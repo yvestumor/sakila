@@ -20,6 +20,10 @@
 		<li><a class="list-group-item list-group-item-light" href="<%=request.getContextPath()%>/salesByFilmCategoryList.jsp">salesByFilmCategoryList(view)</a></li>
 		<li><a class="list-group-item list-group-item-light" href="<%=request.getContextPath()%>/salesByStoreList.jsp">salesByStoreList(view)</a></li>
 		<li><a class="list-group-item list-group-item-light" href="<%=request.getContextPath()%>/staffListView.jsp">staffList(view)</a></li>
+		<!-- procedure 3개 결과 화면 -->
+		<li><a class="list-group-item list-group-item-light" href="<%=request.getContextPath()%>/filmInStock.jsp">filmInstock</a></li>
+		<li><a class="list-group-item list-group-item-light" href="<%=request.getContextPath()%>/filmNotInStock.jsp">filmNotInstock</a></li>
+		<li><a class="list-group-item list-group-item-light" href="<%=request.getContextPath()%>/rewardsReport.jsp">rewardsReport</a></li>
 	</ol>
 </div>
 </body>
