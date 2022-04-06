@@ -85,26 +85,33 @@ public class CustomerListDao {
 		return totalCount;
 	}
 	public Map<String, Object> CustomerRewardsReportCall(int minMonthlyPurchases, double minDollarAmountPurchased) {
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<String,Object>();
+
+		// DB 초기화
 		Connection conn = null;
-		// PreparedStatement : 쿼리를 실행
-		// CallableStatement : 프로시저를 실행 
 		CallableStatement stmt = null;
 		ResultSet rs = null;
-		// select inventory_id .... 
-		// select count(inventroy_id) ....
-		Integer count = 0;
+
+		// hashmap 
+		ArrayList<HashMap<String,Object>> list = new ArrayList<HashMap<String,Object>>(); 
+
+		// 쿼리문의 count를 저장할 변수
+		Integer count = 0; 
+
+		// DBUtil 호출
 		conn = DBUtil.getConnection();
-		try {
-			stmt = conn.prepareCall("{call rewards_report(?, ?, ?)}");
+		try {	
+			// SQL 쿼리 호출
+			stmt = conn.prepareCall("{CALL rewards_report(?,?,?)}");
+
 			stmt.setInt(1, minMonthlyPurchases);
-			stmt.setDouble(2, minDollarAmountPurchased);
-			stmt.registerOutParameter(3, Types.INTEGER);
-			ArrayList<HashMap<String,Object>> list = new ArrayList<HashMap<String,Object>>();
-			HashMap<String,Object> c = null;
+			stmt.setDouble(2,minDollarAmountPurchased);
+			stmt.registerOutParameter(3,Types.INTEGER);
 			rs = stmt.executeQuery();
+
+			// 데이터 변환
 			while(rs.next()) {
-				c = new HashMap<String,Object>();
+				HashMap<String,Object>c = new HashMap<String,Object>();
 				c.put("customerId",rs.getInt(1));
 				c.put("storeId",rs.getInt(2));
 				c.put("firstName",rs.getString(3));
@@ -114,13 +121,29 @@ public class CustomerListDao {
 				c.put("active",rs.getInt(7));
 				c.put("createDate",rs.getString(8));
 				c.put("updateDate",rs.getString(9));
+
+				// 디버깅 코드
+				System.out.println(rs.getInt(1) + " <--customerId");
+				System.out.println(rs.getInt(2) + " <--storeId");
+				System.out.println(rs.getString(3) + " <--firstName");
+				System.out.println(rs.getString(4) + " <--lastName");
+				System.out.println(rs.getString(5) + " <--email");
+				System.out.println(rs.getInt(6) + " <--addressId");
+				System.out.println(rs.getInt(7) + " <--active");
+				System.out.println(rs.getString(8) + " <--createDate");
+				System.out.println(rs.getString(9) + " <--updateDate");
 				list.add(c);
 			}
-			count = stmt.getInt(3); // 프로시저 3번째 out변수 값
+			// count의 개수
+			count = stmt.getInt(3); 
+			System.out.println(count+ " <--count");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
+		map.put("list", list);
 		map.put("count", count);
+
 		return map;
 	}
 }

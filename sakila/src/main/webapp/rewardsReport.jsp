@@ -18,7 +18,8 @@
 	//dao호출
 	CustomerListDao customerListDao = new CustomerListDao();
 	Map<String, Object> map = customerListDao.CustomerRewardsReportCall(minMonthlyPurchases, minDollarAmountPurchased);
-	
+	// Hash Map으로 데이터 저장
+	ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)map.get("list"); 
 	
 	int count = (Integer)map.get("count");
 %>
@@ -34,9 +35,9 @@
 	<a class="btn btn-light" href="<%=request.getContextPath()%>/index.jsp">index</a>
 	<form method="post" action="<%=request.getContextPath()%>/rewardsReport.jsp">
 	<div>MinMonthlyPurchases</div>
-	<input class="form-control" name="filmId" type="number">
+	<input class="form-control" name="minMonthlyPurchases" type="number">
 	<div>MinDollarAmountPurchased</div>
-	<input class="form-control" name="storeId" type="number">
+	<input class="form-control" name="minDollarAmountPurchased" type="number">
 	<div>
 	<button class="btn btn-light" type="submit">검색</button>
 	</div>
@@ -60,11 +61,20 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>List</th>
+					<th>CustomerID</th>
+					<th>StoreID</th>
+					<th>FirstName</th>
+					<th>LastName</th>
+					<th>Email</th>
+					<th>AddressID</th>
+					<th>Active</th>
+					<th>CreateDate</th>
+					<th>UpdateDate</th>
 				</tr>
 			</thead>
 			<tbody>
-			
+				<tr>
+				</tr>
 			</tbody>
 		</table>
 	</div>

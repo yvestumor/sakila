@@ -17,7 +17,7 @@
 	
 	//dao호출
 	FilmDao filmListDao = new FilmDao();
-	Map<String, Object> map = filmListDao.filmInStockCall(filmId, storeId);
+	Map<String, Object> map = filmListDao.filmInStockCall( filmId, storeId);
 	
 	List<Integer> list = (List<Integer>)map.get("list");
 	int count = (Integer)map.get("count");
