@@ -3,7 +3,7 @@
 <%@ page import ="dao.*" %>
 <%@ page import ="vo.*" %>
 <%
-	int currentPage = 1;
+int currentPage = 1;
 	
 	if(request.getParameter("currentPage") != null) { //현재페이지가 null이 아니면
 	currentPage = Integer.parseInt(request.getParameter("currentPage")); //현제페이지값 받아옴
@@ -14,7 +14,7 @@
 	
 	int beginRow = (currentPage -1)*rowPerPage;
 	
-	FilmListDao filmListDao = new FilmListDao();
+	FilmDao filmListDao = new FilmDao();
 	
 	int lastPage = 0;
 	List<FilmList> list = filmListDao.selctFilmListByPage(beginRow, rowPerPage);

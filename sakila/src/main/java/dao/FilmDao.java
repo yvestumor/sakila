@@ -16,7 +16,7 @@ import java.util.Map;
 import util.DBUtil;
 import vo.FilmList;
 
-public class FilmListDao {
+public class FilmDao {
 	public List<FilmList> selctFilmListByPage(int beginRow, int rowPerPage) {
 		List<FilmList> list = new ArrayList<FilmList>();
 		Connection conn = null;
@@ -116,7 +116,7 @@ public class FilmListDao {
 		return map;
 	}
 	public static void main(String[] args) {
-		FilmListDao fd = new FilmListDao();
+		FilmDao fd = new FilmDao();
 		int filmId = 1;
 		int storeId = 1;
 		Map<String, Object> map = fd.filmInStockCall(filmId, storeId);
@@ -154,6 +154,32 @@ public class FilmListDao {
 		map.put("list", list);
 		map.put("count", count);
 		return map;
+		}
+	public List<Double> selectFilmPriceList() {
+		List<Double> list = new ArrayList<Double>();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		conn = DBUtil.getConnection();
+		String sql ="SELECT DISTINCT price FROM film_list ORDER BY price";
+		try {
+			 stmt = conn.prepareStatement(sql);
+			 rs =stmt.executeQuery();
+			 while(rs.next()) {
+				 list.add(rs.getDouble("price"));
+			 }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				rs.close();
+				stmt.close();
+				conn.close();
+		} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
 		}
 	}
 
