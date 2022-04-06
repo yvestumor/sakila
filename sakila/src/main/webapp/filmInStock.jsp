@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="dao.*"%>
 <%@ page import="java.util.*"%>
-<%	
-	// filmInstock에서 넘어온 값 받기
+<%
+// filmInstock에서 넘어온 값 받기
 	int filmId = 0;
 	int storeId = 0;
 	if(request.getParameter("filmId") != null){
@@ -16,13 +16,11 @@
 	System.out.println(storeId + " <--storeId");
 	
 	//dao호출
-	FilmListDao filmListDao = new FilmListDao();
+	FilmDao filmListDao = new FilmDao();
 	Map<String, Object> map = filmListDao.filmInStockCall(filmId, storeId);
 	
 	List<Integer> list = (List<Integer>)map.get("list");
 	int count = (Integer)map.get("count");
-	
-	
 %>
 <!DOCTYPE html>
 <html>
