@@ -94,7 +94,7 @@ public class CustomerListDao {
 
 		// hashmap 
 		ArrayList<HashMap<String,Object>> list = new ArrayList<HashMap<String,Object>>(); 
-
+		HashMap<String,Object> c = null;
 		// 쿼리문의 count를 저장할 변수
 		Integer count = 0; 
 
@@ -111,7 +111,7 @@ public class CustomerListDao {
 
 			// 데이터 변환
 			while(rs.next()) {
-				HashMap<String,Object>c = new HashMap<String,Object>();
+				c = new HashMap<String,Object>();
 				c.put("customerId",rs.getInt(1));
 				c.put("storeId",rs.getInt(2));
 				c.put("firstName",rs.getString(3));

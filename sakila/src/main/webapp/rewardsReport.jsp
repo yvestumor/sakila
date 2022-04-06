@@ -21,7 +21,7 @@
 	// Hash Map으로 데이터 저장
 	ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)map.get("list"); 
 	
-	int count = (Integer)map.get("count");
+	int count = (int)map.get("count");
 %>
 <!DOCTYPE html>
 <html>
@@ -73,8 +73,23 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-				</tr>
+				<%
+						for(Map<String,Object> m : list){
+				%>
+					<tr>				
+						<td><%=(Integer)m.get("customerId")%></td>
+						<td><%=(Integer)m.get("storeId")%></td>
+						<td><%=(String)m.get("firstName")%></td>
+						<td><%=(String)m.get("lastName")%></td>
+						<td><%=(String)m.get("email")%></td>
+						<td><%=(Integer)m.get("addressId")%></td>
+						<td><%=(Integer)m.get("active")%></td>
+						<td><%=(String)m.get("createDate")%></td>
+						<td><%=(String)m.get("updateDate")%></td>
+					</tr>
+			   <%
+						}
+				%>
 			</tbody>
 		</table>
 	</div>
