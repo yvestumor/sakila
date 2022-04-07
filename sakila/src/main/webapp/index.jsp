@@ -27,7 +27,8 @@
 		<li><a class="list-group-item list-group-item-light" href="<%=request.getContextPath()%>/rewardsReport.jsp">rewardsReport</a></li>
 		<h1 class="display-4">검색 리스트</h1>
 		<li><a class="list-group-item list-group-item-light" href="<%=request.getContextPath()%>/filmSearchForm.jsp">filmSearch</a></li>
+		<li><a class="list-group-item list-group-item-light" href="<%=request.getContextPath()%>/rentalSearchForm.jsp">대여 상세검색</a></li> 
 	</ol>
-</div>
+</div> 
 </body>
 </html>
