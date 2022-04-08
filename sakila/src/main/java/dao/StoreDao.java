@@ -1,6 +1,8 @@
 package dao;
 import java.util.*;
 import java.sql.*;
+import util.DBUtil;
+
 public class StoreDao {
 	public List<Map<String, Object>> selectStoreList() {
 		List<Map<String, Object>> list = new ArrayList<>(); // 다형성
@@ -61,6 +63,33 @@ public class StoreDao {
 			}
 		}
 		return list;
+	}
+	public List<Integer> selectStoreIdList(){
+		List<Integer> list = new ArrayList<Integer>();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT DISTINCT store_id storeId FROM store ORDER BY storeId";
+		try {
+			conn = DBUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getInt("storeId"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return list; 
 	}
 
 	// selectStoreList() 테스트 코드 <- 단위테스트
